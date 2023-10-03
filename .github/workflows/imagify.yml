@@ -21,6 +21,7 @@ jobs:
       - name: Deploy dockerhub
         run: | 
           docker login -u jesorel --password ${{ secrets.DOCKERHUB_TOKEN }}
+          echo push to jesorel/docker-spring:$rev
           docker push jesorel/docker-spring:$rev
       - name: Deploy to aws ECR
         env:
@@ -28,5 +29,5 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
           aws ecr get-login-password | docker login -u AWS --password-stdin 244530008913.dkr.ecr.eu-west-1.amazonaws.com/mime005
-          docker push 244530008913.dkr.ecr.eu-west-1.amazonaws.com/mime005:$rev
+          echo push to 244530008913.dkr.ecr.eu-west-1.amazonaws.com/mime005:$rev          docker push 244530008913.dkr.ecr.eu-west-1.amazonaws.com/mime005:$rev
 
