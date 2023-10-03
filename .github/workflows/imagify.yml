@@ -15,7 +15,7 @@ jobs:
       - name: Build image
         run: |
           docker build . -t docker-spring
-          rev= git rev-parse --short HEAD
+          rev=$(git rev-parse --short HEAD)
           docker tag docker-spring jesorel/docker-spring:$rev
           docker tag docker-spring 244530008913.dkr.ecr.eu-west-1.amazonaws.com/mime005:$rev
       - name: Deploy dockerhub
