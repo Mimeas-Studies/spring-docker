@@ -2,13 +2,13 @@ name: Publish docker images
 
 on:
   push:
-    branches: main
+    branches: master
 
   workflow_dispatch:
 
 jobs:
   build_and_deploy_everywhere:
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
